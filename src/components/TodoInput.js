@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import TextDisplay from './TextDisplay';
 
-class TextInput extends Component {
+class TodoInput extends Component {
 
     constructor(props, context) {
         super(props, context);
         this.state = {
-            inputText: 'initial Text'
+            inputText: ''
         };
 
         this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // getInitialState() {
-    //     return {
-    //         inputText: 'initial text'
-    //     };
-    // }
 
     handleTextChange(event) {
         this.setState({
@@ -24,20 +19,27 @@ class TextInput extends Component {
         });
     }
 
+    handleSubmit(event) {
+        event.preventDefault();
+        this.props.addTodo(this.state.inputText);
+    }
+
 
     render () {
         return (
         <div>
+            <form onSubmit= {this.handleSubmit}>
             <input 
                 type = "text"
-                placeholder="This is going to be text"
+                placeholder="Add todo here"
                 value={this.state.inputText}
                 onChange={this.handleTextChange}
             />
-            <TextDisplay text={this.state.inputText}/>
+            <input type="submit" text="Submit"/>
+            </form>
         </div>
         ); 
     }
 }
 
-export default TextInput;
+export default TodoInput;
