@@ -12,7 +12,7 @@ var App = React.createClass({
         return( 
         <div> 
             <h1> ToDo List </h1>
-            <UserInfo user={this.props.user} createNewUserId={this.props.actions.createNewUserId}/>
+            <UserInfo user={this.props.user} actions={this.props.actions}/>
             <TodoInput addTodo = {this.props.actions.addTodo} />
             <TodoList actions = {this.props.actions}  todos = {this.props.todos} />/>
         </div>
